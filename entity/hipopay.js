@@ -51,10 +51,26 @@ class HipoPay {
         return origin_str;
     }
 
+    get_param(){
+        let origin_str = "";
+
+        let keys = Object.keys(this.params).sort();
+
+        for(let i in keys) {
+            if (i === "0"){
+                origin_str = keys[i] + '=' + this.params[keys[i]];
+            }
+            else {
+                origin_str += "&" + keys[i] + '=' + this.params[keys[i]];
+            }
+        }
+        return origin_str;
+    }
+
 
     sign() {
         let origin_str = this.get_origin_str();
-        let privateKey = fs.readFileSync(path.join("../keys", "private.key"), "ascii");
+        let privateKey = fs.readFileSync(path.join(config.ROOT_PATH + "/keys", "private.key"), "ascii");
         console.log(privateKey);
         console.log(origin_str);
 
@@ -65,17 +81,18 @@ class HipoPay {
     }
 
     get() {
+        let params = this.get_param();
         const options = {
             hostname: config.HP_HOST,
             port: 443,
-            path: this.apiUrl + '?currency=HKD',
+            path: this.apiUrl + '?' + params,
             method: 'GET',
             headers: this.headers,
         };
         const req = https.request(options, (res) => {
-            console.log('状态码:', res.statusCode);
-            console.log('请求头:', this.headers);
-            console.log('参数:', this.params);
+            // console.log('状态码:', res.statusCode);
+            // console.log('请求头:', this.headers);
+            // console.log('参数:', this.params);
             res.on('data', (d) => {
                 process.stdout.write(d);
             });
@@ -93,12 +110,11 @@ class HipoPay {
             path: this.apiUrl,
             method: 'POST',
             headers: this.headers,
-            // value: this.params,
         };
         const req = https.request(options, (res) => {
-            console.log('状态码:', res.statusCode);
-            console.log('请求头:', this.headers);
-            console.log('参数:', this.params);
+            // console.log('状态码:', res.statusCode);
+            // console.log('请求头:', this.headers);
+            // console.log('参数:', this.params);
             res.on('data', (d) => {
                 process.stdout.write(d);
             });
@@ -106,35 +122,38 @@ class HipoPay {
         req.on('error', (e) => {
             console.error(e);
         });
-        var content=qs.stringify(this.params);
+        let content=qs.stringify(this.params);
         req.write(content);
         req.end();
     }
 
-    delet() {}
+    // delete() {}
     
-    put() {
-
-    }
+    // put() {}
 }
 
-let params = {
-    'currency': 'HKD'
-};
-
-// let params = {
-//     'out_trade_id': 'your_trade_id',
-//     'amount': '10',
-//     'currency': 'HKD',
-//     'product_info': 'test',
-//     'client_ip': '127.0.0.1',
-//     'notify_url': 'your_notify_url',
-// };
-
-const hipopay = new HipoPay({
-    "apiUrl": "/wechatpay/forex_rate",
-    // "apiUrl": "/wechatpay/web/payment",
-    "params": params
+module.exports = Object.freeze({
+    HipoPay: HipoPay,
 });
 
-hipopay.get();
+
+// let params = {
+//     'currency': 'HKD'
+// };
+//
+// // let params = {
+// //     'out_trade_id': 'your_trade_id',
+// //     'amount': '10',
+// //     'currency': 'HKD',
+// //     'product_info': 'test',
+// //     'client_ip': '127.0.0.1',
+// //     'notify_url': 'your_notify_url',
+// // };
+//
+// const hipopay = new HipoPay({
+//     "apiUrl": "/wechatpay/forex_rate",
+//     // "apiUrl": "/wechatpay/web/payment",
+//     "params": params
+// });
+//
+// hipopay.get();
