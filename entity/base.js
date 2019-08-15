@@ -7,21 +7,21 @@ class Base {
         this.is_cny = is_cny;
     }
 
-    if_cny(params){
+    ifCny(params){
         if (this.is_cny) {
             params['is_rmb'] = 'TRUE';
         }
         return params;
     }
 
-    get_bill(params) {
+    getBill(params) {
         let request = new hipopay.HipoPay({
             "apiUrl": '/download_bill',
             "params": params});
         request.get();
     }
 
-    get_payment(params) {
+    getPayment(params) {
         let request = new hipopay.HipoPay({
             "apiUrl": '/payment',
             "params": params});
@@ -35,7 +35,7 @@ class Base {
         request.post()
     }
 
-    get_refund(params) {
+    getRefund(params) {
         let request = new hipopay.HipoPay({
             "apiUrl": '/payment_refund',
             "params": params});

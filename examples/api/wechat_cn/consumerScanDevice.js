@@ -1,4 +1,5 @@
-const wechatCN = require('../../../entity/wechatCN');
+const config = require('../../../config');
+const wechatCN = require(config.ROOT_PATH + '/entity/wechatCN');
 
 params = {
     'out_trade_id': 'your_trade_id',             // 商户交易流水号 Y
@@ -10,4 +11,4 @@ params = {
 };
 // is_cny 是否采用人民币(CNY)计价，取值"TRUE"/"FALSE"，默认值为"FALSE"
 let wechat_cn = new wechatCN.WechatCN();
-wechat_cn.consumer_scan_device(params);
+wechat_cn.consumerScanDevice(params);

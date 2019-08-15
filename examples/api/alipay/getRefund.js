@@ -1,4 +1,5 @@
-const alipay = require('../../../entity/alipay');
+const config = require('../../../config');
+const alipay = require(config.ROOT_PATH + '/entity/alipay');
 
 
 params = {
@@ -6,5 +7,5 @@ params = {
     'out_refund_id': 'your_refund_id',  // 外部退款单号，和refund_no不可同时为空
 };
 let ali = new alipay.Alipay();
-ali.get_refund(params);
+ali.getRefund(params);
 

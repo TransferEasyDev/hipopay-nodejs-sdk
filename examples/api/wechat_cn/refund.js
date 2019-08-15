@@ -1,4 +1,5 @@
-const wechatCN = require('../../../entity/wechatCN');
+const config = require('../../../config');
+const wechatCN = require(config.ROOT_PATH + '/entity/wechatCN');
 
 params = {
     'payment_no': 'hp_payment_no',        // 支付单号 N

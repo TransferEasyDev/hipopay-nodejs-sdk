@@ -1,5 +1,5 @@
-const wechatCN = require('../../../entity/wechatCN');
 const config = require('../../../config');
+const wechatCN = require(config.ROOT_PATH + '/entity/wechatCN');
 
 
 /* 第一步 获取用户登录凭证 */
@@ -18,4 +18,4 @@ params = {
 };
 // is_cny 是否采用人民币(CNY)计价，取值"TRUE"/"FALSE"，默认值为"FALSE"
 let wechat_cn = new wechatCN.WechatCN();
-wechat_cn.mini_program_pay(params);
+wechat_cn.miniProgramPay(params);

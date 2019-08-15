@@ -1,4 +1,5 @@
-const alipay = require('../../../entity/alipay');
+const config = require('../../../config');
+const alipay = require(config.ROOT_PATH + '/entity/alipay');
 
 params = {
     'payment_no': 'hp_payment_no',        // 支付单号 N

@@ -1,4 +1,5 @@
-const alipay = require('../../../entity/alipay');
+const config = require('../../../config');
+const alipay = require(config.ROOT_PATH + '/entity/alipay');
 
 params = {
     'out_trade_id': 'your_trade_id',        // 商户交易流水号  Y
@@ -13,5 +14,5 @@ params = {
 // is_hk 是否使用支付宝香港钱包，取值"TRUE"/"FALSE"，默认值为"FALSE"
 // is_cny 是否采用人民币(CNY)计价，取值"TRUE"/"FALSE"，默认值为"FALSE"
 let ali = new alipay.Alipay();
-ali.wap_pay(params);
+ali.wapPay(params);
 

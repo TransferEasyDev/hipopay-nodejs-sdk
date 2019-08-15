@@ -34,7 +34,7 @@ class HipoPay {
         console.log(this.headers);
     }
 
-    get_origin_str(){
+    getOriginStr(){
         let origin_str = "";
 
         let keys = Object.keys(this.params).sort();
@@ -51,7 +51,7 @@ class HipoPay {
         return origin_str;
     }
 
-    get_param(){
+    getParam(){
         let origin_str = "";
 
         let keys = Object.keys(this.params).sort();
@@ -69,8 +69,8 @@ class HipoPay {
 
 
     sign() {
-        let origin_str = this.get_origin_str();
-        let privateKey = fs.readFileSync(path.join(config.ROOT_PATH + "/keys", "private.key"), "ascii");
+        let origin_str = this.getOriginStr();
+        let privateKey = fs.readFileSync(config.MERCHANT_PRIVATE_KEY_PATH, "ascii");
         console.log(privateKey);
         console.log(origin_str);
 
@@ -81,7 +81,7 @@ class HipoPay {
     }
 
     get() {
-        let params = this.get_param();
+        let params = this.getParam();
         const options = {
             hostname: config.HP_HOST,
             port: 443,

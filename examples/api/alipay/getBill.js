@@ -1,5 +1,5 @@
-const alipay = require('../../../entity/alipay');
 const config = require('../../../config');
+const alipay = require(config.ROOT_PATH + '/entity/alipay');
 
 
 params = {
@@ -8,4 +8,4 @@ params = {
     'end_date': '20190120',
 };
 let ali = new alipay.Alipay();
-ali.get_bill(params);
+ali.getBill(params);

@@ -1,5 +1,5 @@
-const wechatCN = require('../../../entity/wechatCN');
 const config = require('../../../config');
+const wechatCN = require(config.ROOT_PATH + '/entity/wechatCN');
 
 /* 第一步 / 请求预支付接口 */
 params = {
@@ -13,7 +13,7 @@ params = {
 };
 // is_cny 是否采用人民币(CNY)计价，取值"TRUE"/"FALSE"，默认值为"FALSE"
 let wechat_cn = new wechatCN.WechatCN();
-wechat_cn.app_pay(params);
+wechat_cn.appPay(params);
 
 /* 第二步 / 调用微信支付SDK */
 /* 第三步 / 获取订单状态 */

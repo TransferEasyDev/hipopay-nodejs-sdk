@@ -1,5 +1,5 @@
-const wechatCN = require('../../../entity/wechatCN');
 const config = require('../../../config');
+const wechatCN = require(config.ROOT_PATH + '/entity/wechatCN');
 
 params = {
     'merchant_no': config.MERCHANT_NO,
@@ -7,4 +7,4 @@ params = {
     'end_date': '20190120',
 };
 let wechat_cn = new wechatCN.WechatCN();
-wechat_cn.get_bill(params);
+wechat_cn.getBill(params);

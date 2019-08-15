@@ -1,4 +1,5 @@
-const alipay = require('../../../entity/alipay');
+const config = require('../../../config');
+const alipay = require(config.ROOT_PATH + '/entity/alipay');
 
 
 params = {
@@ -6,5 +7,5 @@ params = {
     'out_trade_id': 'your_trade_id',      // 商户交易流水号 N
 };
 let ali = new alipay.Alipay();
-ali.get_payment(params);
+ali.getPayment(params);
 
