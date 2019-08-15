@@ -1,11 +1,19 @@
 {
   "name": "hipopay",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "HipoPay product nodejs demo",
+  "dependencies": {
+    "consolidate": "^0.15.1",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "body-parser": "latest"
+  },
+  "devDependencies": {
+    "multer": "^1.4.2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "TransferEasy",
   "license": "ISC"
 }

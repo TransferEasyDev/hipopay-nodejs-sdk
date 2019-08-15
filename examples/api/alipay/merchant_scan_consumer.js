@@ -11,5 +11,5 @@ params = {
 };
 // is_hk 是否使用支付宝香港钱包，取值"TRUE"/"FALSE"，默认值为"FALSE"
 let ali = new alipay.Alipay();
-ali.consumer_scan_merchant(params);
+ali.merchant_scan_conumer(params);
 

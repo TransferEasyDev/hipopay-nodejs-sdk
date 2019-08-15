@@ -7,9 +7,3 @@ module.exports = Object.freeze({
     ROOT_PATH: __dirname,
 
 });
-
-
-
-
-
-
