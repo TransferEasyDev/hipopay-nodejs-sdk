@@ -25,6 +25,7 @@ class NotifyServer extends bs.BaseServer {
     static callbackVerify({signature, timestamp, params}) {
         // 组织原始加密字串
         // console.log(params);
+        // TODO: 还获取不到HP发来的参数，不知道这帮人咋搞的
         console.log(signature);
 
         // Signature处理
@@ -33,6 +34,7 @@ class NotifyServer extends bs.BaseServer {
         console.log(signature);
 
         // 参数组织
+        console.log(params);
         let param_str = NotifyServer.getParam(params);
         param_str += "," + timestamp;
         console.log(param_str);
@@ -44,6 +46,7 @@ class NotifyServer extends bs.BaseServer {
         let verify = crypto.createVerify("RSA-SHA256");
         verify.update(param_str);
         return verify.verify(publicKey, signature, 'hex')
+        // TODO: 验签还不对
     }
 
     initRouterPost({url, content, params, callback}) {
