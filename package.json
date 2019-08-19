@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "HipoPay product nodejs demo",
   "dependencies": {
+    "body-parser": "latest",
     "consolidate": "^0.15.1",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
-    "body-parser": "latest"
+    "xml2json": "^0.11.2"
   },
   "devDependencies": {
     "multer": "^1.4.2"
