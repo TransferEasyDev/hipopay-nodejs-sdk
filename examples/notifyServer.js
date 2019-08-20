@@ -24,14 +24,13 @@ class NotifyServer extends bs.BaseServer {
     }
 
     static callbackVerify({signature, timestamp, params}) {
-        // 参数组织
+        // 组织解密字符串
         let param_str = NotifyServer.getParam(params);
         param_str = new Buffer(param_str).toString('utf8');
         param_str += "," + timestamp;
-        console.log(param_str);
 
         // Signature处理
-        signature = new Buffer(signature, 'base64').toString();
+        signature = new Buffer(signature, 'base64');  //TODO: 这里不要转字符串 tks mixj同学
 
         // 读取验签公钥
         let publicKey = fs.readFileSync(config.HP_PUBLIC_KEY_PATH, "ascii");
@@ -39,8 +38,7 @@ class NotifyServer extends bs.BaseServer {
         // 验签
         let verify = crypto.createVerify("RSA-SHA256");
         verify.update(param_str);
-        return verify.verify(publicKey, signature, 'hex')
-        // TODO: 验签还不对
+        return verify.verify(publicKey, signature)
     }
 
     initRouterPost({url, content, params, callback}) {
@@ -56,10 +54,10 @@ class NotifyServer extends bs.BaseServer {
             // 获取参数
             Object.assign(params,req.body);
 
-            /* 这段代码是处理header没写 content type的情况, python不带header类型为 text/xml */
+            /* ↓↓↓↓↓↓↓↓这段代码是处理header没写 content type的情况, python requests post不带header, content type类型为 text/xml */
             req.rawBody = '';//添加接收变量
             let json={};
-            req.setEncoding('utf8');
+            // req.setEncoding('utf8');
             req.on('data', function(chunk) {
                 req.rawBody += chunk;
             });
@@ -67,7 +65,7 @@ class NotifyServer extends bs.BaseServer {
                 json=xml2json.toJson(req.rawBody);
                 res.send(JSON.stringify(json));
             });
-            /* 这段代码是处理header没写 content type的情况, python不带header类型为 text/xml */
+            /* ↑↑↑↑↑↑↑↑这段代码是处理header没写 content type的情况, python requests post不带header, content type类型为 text/xml */
 
             let verifyResult = NotifyServer.callbackVerify({
                 signature: signature,

@@ -10,7 +10,6 @@ params = {
     'client_ip': '0.0.0.0',                 // 客户端设备IP地址 Y
     'notify_url': 'your_notify_url',        // 异步通知地址  N
 };
-// is_cny 是否采用人民币(CNY)计价，取值"TRUE"/"FALSE"，默认值为"FALSE"
 let ali = new alipay.Alipay();
 ali.appPay(params);
 

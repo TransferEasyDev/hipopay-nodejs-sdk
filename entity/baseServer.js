@@ -37,19 +37,6 @@ class BaseServer {
         })
     }
 
-    initRouterPost({url, content, params, callback}) {
-
-        this.app.post(url, function (req, res) {
-            Object.assign(params,req.body);
-            console.log(params);
-            if (callback) {
-                callback('可以在这里运行业务代码');
-            }
-            res.write(content);
-            res.end();
-        })
-    }
-
     startServer() {
         const server = this.app.listen(8086, function () {
 

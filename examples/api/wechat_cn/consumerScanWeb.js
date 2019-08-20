@@ -9,6 +9,5 @@ params = {
     'client_ip': '127.0.0.1',                    // 客户端设备IP地址
     'notify_url': 'http://vukv2v.natappfree.cc/notify',             // 异步通知地址
 };
-// is_cny 是否采用人民币(CNY)计价，取值"TRUE"/"FALSE"，默认值为"FALSE"
 let wechat_cn = new wechatCN.WechatCN();
 wechat_cn.consumerScanWeb(params);

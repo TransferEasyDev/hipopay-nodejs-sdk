@@ -10,7 +10,8 @@ class WechatCN extends base.Base {
         params = this.ifCny(params);
         let request = new hipopay.HipoPay({
             "apiUrl": '/wechatpay/app/payment',
-            "params": params});
+            "params": params
+        });
         request.post();
     }
 
@@ -18,7 +19,8 @@ class WechatCN extends base.Base {
         params = this.ifCny(params);
         let request = new hipopay.HipoPay({
             "apiUrl": '/wechatpay/mini_program/payment',
-            "params": params});
+            "params": params
+        });
         request.post();
     }
 
@@ -26,7 +28,8 @@ class WechatCN extends base.Base {
         params = this.ifCny(params);
         let request = new hipopay.HipoPay({
             "apiUrl": '/wechatpay/web/payment',
-            "params": params});
+            "params": params
+        });
         request.post();
     }
 
@@ -34,7 +37,8 @@ class WechatCN extends base.Base {
         params = this.ifCny(params);
         let request = new hipopay.HipoPay({
             "apiUrl": '/wechatpay/qrcode/payment',
-            "params": params});
+            "params": params
+        });
         request.post();
     }
 
@@ -42,14 +46,16 @@ class WechatCN extends base.Base {
         params = this.ifCny(params);
         let request = new hipopay.HipoPay({
             "apiUrl": '/wechatpay/barcode/payment',
-            "params": params});
+            "params": params
+        });
         request.post();
     }
 
     getRate(params){
         let request = new hipopay.HipoPay({
             "apiUrl": '/wechatpay/forex_rate',
-            "params": params});
+            "params": params
+        });
         request.get();
     }
 }

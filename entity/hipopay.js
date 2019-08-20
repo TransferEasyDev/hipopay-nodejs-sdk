@@ -1,6 +1,5 @@
 const fs = require("fs");
 const crypto = require('crypto');
-const path = require("path");
 const https = require('https');
 const qs = require('querystring');
 const config = require("../config");
@@ -8,7 +7,6 @@ const config = require("../config");
 class HipoPay {
 
     constructor({apiUrl, params}) {
-        // this.url = config.HP_HOST + "/" + apiUrl;
         this.apiUrl = apiUrl;
         this.params = params;
 
@@ -25,13 +23,9 @@ class HipoPay {
 
         };
 
-        if (apiUrl === 'download_bill') {
+        if (apiUrl === '/download_bill') {
             this.headers["Version"] = '3.0'
         }
-
-        console.log(this.apiUrl);
-        console.log(this.params);
-        console.log(this.headers);
     }
 
     getOriginStr(){
@@ -71,7 +65,7 @@ class HipoPay {
     sign() {
         let origin_str = this.getOriginStr();
         let privateKey = fs.readFileSync(config.MERCHANT_PRIVATE_KEY_PATH, "ascii");
-        console.log(privateKey);
+        // console.log(privateKey);
         console.log(origin_str);
 
         let signObj = crypto.createSign("RSA-SHA256");
@@ -90,9 +84,9 @@ class HipoPay {
             headers: this.headers,
         };
         const req = https.request(options, (res) => {
-            // console.log('状态码:', res.statusCode);
-            // console.log('请求头:', this.headers);
-            // console.log('参数:', this.params);
+            console.log('状态码:', res.statusCode);
+            console.log('请求头:', this.headers);
+            console.log('参数:', this.params);
             res.on('data', (d) => {
                 process.stdout.write(d);
             });
@@ -112,9 +106,9 @@ class HipoPay {
             headers: this.headers,
         };
         const req = https.request(options, (res) => {
-            // console.log('状态码:', res.statusCode);
-            // console.log('请求头:', this.headers);
-            // console.log('参数:', this.params);
+            console.log('状态码:', res.statusCode);
+            console.log('请求头:', this.headers);
+            console.log('参数:', this.params);
             res.on('data', (d) => {
                 process.stdout.write(d);
             });
@@ -136,24 +130,3 @@ module.exports = Object.freeze({
     HipoPay: HipoPay,
 });
 
-
-// let params = {
-//     'currency': 'HKD'
-// };
-//
-// // let params = {
-// //     'out_trade_id': 'your_trade_id',
-// //     'amount': '10',
-// //     'currency': 'HKD',
-// //     'product_info': 'test',
-// //     'client_ip': '127.0.0.1',
-// //     'notify_url': 'your_notify_url',
-// // };
-//
-// const hipopay = new HipoPay({
-//     "apiUrl": "/wechatpay/forex_rate",
-//     // "apiUrl": "/wechatpay/web/payment",
-//     "params": params
-// });
-//
-// hipopay.get();

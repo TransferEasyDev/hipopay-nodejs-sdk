@@ -12,7 +12,6 @@ params = {
 };
 
 // is_hk 是否使用支付宝香港钱包，取值"TRUE"/"FALSE"，默认值为"FALSE"
-// is_cny 是否采用人民币(CNY)计价，取值"TRUE"/"FALSE"，默认值为"FALSE"
 let ali = new alipay.Alipay();
 ali.wapPay(params);
 
