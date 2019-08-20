@@ -2,7 +2,7 @@
 const hipopay = require('./hipopay');
 
 class Base {
-    constructor(is_hk=false, is_cny=false) {
+    constructor(is_hk, is_cny) {
         this.is_hk = is_hk;
         this.is_cny = is_cny;
     }
