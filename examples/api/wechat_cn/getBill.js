@@ -6,5 +6,5 @@ params = {
     'start_date': '20190701',
     'end_date': '20190720',
 };
-let wechat_cn = new wechatCN.WechatCN();
+let wechat_cn = new wechatCN.WechatCN({'isHK':false, 'isCNY':false});
 wechat_cn.getBill(params);

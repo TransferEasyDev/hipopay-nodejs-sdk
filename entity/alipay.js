@@ -5,7 +5,7 @@ const base = require('./base');
 class Alipay extends base.Base {
 
     isHk(params) {
-        if (this.is_hk){
+        if (this.isHK){
             params['hk_wallet'] = 'true';
         }
         return params;

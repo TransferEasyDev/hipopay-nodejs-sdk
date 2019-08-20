@@ -7,5 +7,5 @@ params = {
     'start_date': '20190701',
     'end_date': '20190720',
 };
-let ali = new alipay.Alipay();
+let ali = new alipay.Alipay({'isHK':false, 'isCNY':false});
 ali.getBill(params);

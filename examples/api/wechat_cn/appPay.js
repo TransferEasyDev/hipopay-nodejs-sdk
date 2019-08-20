@@ -11,7 +11,7 @@ params = {
     'client_ip': 'test_agent_order_id',           // 客户端设备IP地址 Y
     'notify_url': 'test_product_id',              // 异步通知地址 N
 };
-let wechat_cn = new wechatCN.WechatCN();
+let wechat_cn = new wechatCN.WechatCN({'isHK':false, 'isCNY':false});
 wechat_cn.appPay(params);
 
 /* 第二步 / 调用微信支付SDK */

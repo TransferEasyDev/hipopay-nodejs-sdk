@@ -2,13 +2,15 @@
 const hipopay = require('./hipopay');
 
 class Base {
-    constructor(is_hk, is_cny) {
-        this.is_hk = is_hk;
-        this.is_cny = is_cny;
+    constructor({isHK, isCNY}) {
+        this.isHK = isHK;
+        this.isCNY = isCNY;
+        console.log(this.isCNY);
+        console.log(this.isHK);
     }
 
     ifCny(params){
-        if (this.is_cny) {
+        if (this.isCNY) {
             params['is_rmb'] = 'TRUE';
         }
         return params;

@@ -10,5 +10,5 @@ params = {
     'client_ip': '',                           // 客户端设备IP地址 Y
     'notify_url': '0.0.0.0',                   // 异步通知地址 N
 };
-let wechat_cn = new wechatCN.WechatCN();
+let wechat_cn = new wechatCN.WechatCN({'isHK':false, 'isCNY':false});
 wechat_cn.merchantScanConsumer(params);

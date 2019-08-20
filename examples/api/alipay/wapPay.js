@@ -11,7 +11,7 @@ params = {
     'notify_url': 'your_notify_url',        // 异步通知地址  N
 };
 
-// is_hk 是否使用支付宝香港钱包，取值"TRUE"/"FALSE"，默认值为"FALSE"
-let ali = new alipay.Alipay();
+// isHK 是否使用支付宝香港钱包，取值"TRUE"/"FALSE"，默认值为"FALSE"
+let ali = new alipay.Alipay({'isHK':false, 'isCNY':false});
 ali.wapPay(params);
 

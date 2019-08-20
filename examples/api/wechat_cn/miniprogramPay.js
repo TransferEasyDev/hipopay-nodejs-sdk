@@ -16,5 +16,5 @@ params = {
     'client_ip': 'test_agent_order_id',        // 客户端设备IP地址
     'notify_url': 'your_notify_url',           // 异步通知地址
 };
-let wechat_cn = new wechatCN.WechatCN();
+let wechat_cn = new wechatCN.WechatCN({'isHK':false, 'isCNY':false});
 wechat_cn.miniProgramPay(params);

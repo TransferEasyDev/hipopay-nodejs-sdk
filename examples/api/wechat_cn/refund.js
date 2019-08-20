@@ -7,6 +7,6 @@ params = {
     'refund_amount': '100',               // 退款金额。传入此参数，可发起多次退款，退款总额不超过订单金额；不传此参数则是全额退款；
 };
 
-let wechat_cn = new wechatCN.WechatCN();
+let wechat_cn = new wechatCN.WechatCN({'isHK':false, 'isCNY':false});
 wechat_cn.refund(params);
 
