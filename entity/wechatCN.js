@@ -58,6 +58,30 @@ class WechatCN extends base.Base {
         });
         request.get();
     }
+
+    declaration(params){
+        let request = new hipopay.HipoPay({
+            "apiUrl": '/wechatpay/declaration',
+            "params": params
+        });
+        request.post();
+    }
+
+    getDeclaration(params){
+        let request = new hipopay.HipoPay({
+            "apiUrl": '/wechatpay/declaration',
+            "params": params
+        });
+        request.get();
+    }
+
+    redeclaration(params){
+        let request = new hipopay.HipoPay({
+            "apiUrl": '/wechatpay/redeclaration',
+            "params": params
+        });
+        request.post();
+    }
 }
 
 module.exports = Object.freeze({

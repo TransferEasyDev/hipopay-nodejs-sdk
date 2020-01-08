@@ -64,6 +64,29 @@ class Alipay extends base.Base {
         });
         request.get();
     }
+    declaration(params){
+        let request = new hipopay.HipoPay({
+            "apiUrl": '/alipay/declaration',
+            "params": params
+        });
+        request.post();
+    }
+
+    getDeclaration(params){
+        let request = new hipopay.HipoPay({
+            "apiUrl": '/alipay/declaration',
+            "params": params
+        });
+        request.get();
+    }
+
+    redeclaration(params){
+        let request = new hipopay.HipoPay({
+            "apiUrl": '/alipay/redeclaration',
+            "params": params
+        });
+        request.post();
+    }
 }
 
 module.exports = Object.freeze({
